@@ -19,18 +19,18 @@ CREATE TABLE dim_permit_type (
   review_type      VARCHAR(100) NOT NULL,
   work_type        VARCHAR(100) NOT NULL DEFAULT 'UNKNOWN',
   UNIQUE KEY uq_permit_type (permit_type, review_type, work_type)
-);
+) COLLATE utf8mb4_bin;
 
 CREATE TABLE dim_status (
   status_key        INT AUTO_INCREMENT PRIMARY KEY,
   permit_status     VARCHAR(50)  NOT NULL DEFAULT 'UNKNOWN',
   permit_milestone  VARCHAR(200) NOT NULL DEFAULT 'UNKNOWN',
   UNIQUE KEY uq_status (permit_status, permit_milestone)
-);
+) COLLATE utf8mb4_bin;
 
 CREATE TABLE dim_community_area (
   community_area_key   SMALLINT UNSIGNED PRIMARY KEY,   -- city's 1-77 numbering
-  community_area_name  VARCHAR(50) NOT NULL
+  community_area_name  VARCHAR(50) NULL
 );
 
 CREATE TABLE dim_contact (
@@ -40,7 +40,7 @@ CREATE TABLE dim_contact (
   state         CHAR(2)      NOT NULL DEFAULT '',
   zip5          CHAR(5)      NOT NULL DEFAULT '',
   UNIQUE KEY uq_contact (contact_name, city, state, zip5)
-);
+) COLLATE utf8mb4_bin;
 
 CREATE TABLE fact_permit (
   permit_id                VARCHAR(20) PRIMARY KEY,   -- source ID column
@@ -48,7 +48,7 @@ CREATE TABLE fact_permit (
   permit_type_key          INT NOT NULL,
   status_key               INT NOT NULL,
   community_area_key       SMALLINT UNSIGNED NULL,
-  application_date_key     INT NOT NULL,
+  application_date_key     INT NULL,
   issue_date_key           INT NOT NULL,
   processing_days          INT NULL,
   reported_cost            DECIMAL(14,2) NULL,
