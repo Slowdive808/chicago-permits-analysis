@@ -8,6 +8,7 @@ from sqlalchemy.engine import URL
 
 ROOT = Path(__file__).resolve().parents[1]
 CSV = ROOT / "data/raw/building_permits.csv"
+AREAS_CSV = ROOT / "data/raw/community_areas.csv"
 SCHEMA = ROOT / "db/schema.sql"
 CHUNK = 10_000
 
@@ -103,14 +104,17 @@ def main():
         df, {"PERMIT_STATUS": "permit_status", "PERMIT_MILESTONE": "permit_milestone"},
         "dim_status", "status_key", engine)
 
-    # dim_community_area: numbers now, names in a later step
+    # dim_community_area: numbers and names from the city's boundaries file
     community_area = whole_number(df["COMMUNITY_AREA"])
     valid_area = community_area.between(1, 77).fillna(False)
     issues["community area outside 1-77 (set to NULL)"] = int(
         (community_area.notna() & ~valid_area).sum())
     community_area = community_area.where(valid_area)
-    load(pd.DataFrame({"community_area_key": sorted(community_area.dropna().unique())}),
-         "dim_community_area", engine)
+    areas = pd.read_csv(AREAS_CSV, usecols=["AREA_NUMBE", "COMMUNITY"])
+    load(pd.DataFrame({
+        "community_area_key": areas["AREA_NUMBE"].astype(int),
+        "community_area_name": areas["COMMUNITY"].str.strip(),
+    }).sort_values("community_area_key"), "dim_community_area", engine)
 
     # fact_permit
     processing = whole_number(df["PROCESSING_TIME"].str.replace(",", ""))
