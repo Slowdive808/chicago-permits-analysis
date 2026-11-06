@@ -23,3 +23,8 @@ downloaded November 4, 2026. 852,143 permits, 117 columns.
 | State written as `ILL` | Not counted | Mapped to `IL` |
 | Zip codes with trailing dashes (`60025-`) | Not counted | Kept the first five digits |
 | Misspelled cities (`MERRIVILLE`, `PARKRIDGE`) | Not yet measured | Open item |
+
+| Easy Permit program ended in late 2023 and was replaced by Express | ~40 late Easy permits in 2024-2025 | Comparisons across programs treat 2024 onward as a separate period |
+
+   | Easy Permit program ended in late 2023 and was replaced by Express | ~40 late Easy permits in 2024-2025 | Comparisons across programs treat 2024 onward as a separate period |
+   | Processing times jump sharply for the same permit types after the late-2023 system change (new construction median 3 to 52 days) | All 2024+ permits | Open item: may reflect a change in how the application start date is recorded rather than real slowdown; reported with that caveat |
