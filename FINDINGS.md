@@ -21,3 +21,26 @@
    increase may partly reflect a change in measurement rather than slower reviews.
 
    Queries: `sql/01_processing_time_by_program.sql`
+
+   ## 2. Which neighborhoods are growing and shrinking?
+
+Permit activity fell citywide, from about 48,500 permits in 2019 to about 32,000 in 2025.
+Comparing three-year averages, the city dropped 27.6% from 2015-2017 to 2023-2025.
+
+Against that baseline, most of the South and Southwest Side held up better than the city.
+Ashburn (+34%) and Calumet Heights (+17%) grew outright. The busiest North Side and
+near-downtown areas fell faster than the city: Logan Square (-43%), Avondale (-41%),
+West Town (-39%), and the Loop (-37%).
+
+Single-year changes are noisy at neighborhood scale. Lincoln Square led all areas from
+2024 to 2025 (+25%) but is down 19% over the longer period, so the three-year comparison
+is the more reliable measure.
+
+Permit counts and dollar value tell different stories. From 2021 to 2025, Hyde Park ranked
+35th by permit count but 8th by reported value, and Woodlawn 36th and 9th, driven by large
+institutional projects such as a medical center and the presidential center museum at
+Jackson Park. Before cleaning, typos on rooftop solar permits (up to $872 million each)
+pushed several areas into the top 10 by value. Removing 91 implausible fast-track costs
+removed six areas from the top 20.
+
+Queries: `sql/02_community_area_trends.sql`. Cost cleaning: `db/views.sql`.
