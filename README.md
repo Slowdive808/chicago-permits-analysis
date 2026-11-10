@@ -134,9 +134,13 @@ November 4, 2026.
 - A regression on what drives processing time
 - Database administration: a read-only analyst user, tested backup and restore, and
   index tuning documented with before and after `EXPLAIN` output
-- An interactive dashboard in Tableau Public
 
 ## Data source
 
 City of Chicago Data Portal, [Building Permits](https://data.cityofchicago.org/d/ydr8-5enu)
 and [Boundaries - Community Areas](https://data.cityofchicago.org/d/igwz-8jzy).
+
+
+   **[View the interactive dashboard on Tableau Public](https://public.tableau.com/app/profile/joseph.patterson1266/viz/Chicago_Permit_Book/Overview)**
+
+   [![Dashboard preview](docs/dashboard.jpg)](https://public.tableau.com/app/profile/joseph.patterson1266/viz/Chicago_Permit_Book/Overview)
